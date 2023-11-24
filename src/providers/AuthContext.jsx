@@ -10,15 +10,13 @@ import React, {
   useState
 } from 'react'
 
-import { AuthContextData, IUserData } from '@/@types/Auth'
-
 // ===================================================================
 
-export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
+export const AuthContext = createContext({})
 
-const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userId, setUserId] = useState<string | null>(null)
-  const [userData, setUserData] = useState<IUserData | null>(null)
+const AuthProvider = ({ children }) => {
+  const [userId, setUserId] = useState(null)
+  const [userData, setUserData] = useState(null)
 
   // -----------------------------------------------------------------
 
@@ -61,7 +59,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-function useAuth(): AuthContextData {
+function useAuth() {
   const context = useContext(AuthContext)
 
   if (!context) throw new Error('useAuth must be used within a UserProvider')

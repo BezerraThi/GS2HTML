@@ -1,5 +1,11 @@
 @import '@/styles/variables.module.scss';
 
 .guide_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+
   background-color: $bg-default;
 }

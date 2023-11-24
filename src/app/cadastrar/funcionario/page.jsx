@@ -17,11 +17,11 @@ export default function EmployeeSignupPage() {
   const [userCpf, setUserCpf] = useState('')
   const [userPassword, setUserPassword] = useState('')
 
-  const handleChangeUserName = (value: string) => setUserName(value)
-  const handleChangeUserEmail = (value: string) => setUserEmail(value)
-  const handleChangeUserAddress = (value: string) => setUserAddress(value)
-  const handleChangeUserCpf = (value: string) => setUserCpf(value)
-  const handleChangeUserPassword = (value: string) => setUserPassword(value)
+  const handleChangeUserName = (value) => setUserName(value)
+  const handleChangeUserEmail = (value) => setUserEmail(value)
+  const handleChangeUserAddress = (value) => setUserAddress(value)
+  const handleChangeUserCpf = (value) => setUserCpf(value)
+  const handleChangeUserPassword = (value) => setUserPassword(value)
 
   const handleSignup = () => {
     const signupData = {

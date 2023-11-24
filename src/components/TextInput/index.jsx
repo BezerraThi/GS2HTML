@@ -5,19 +5,13 @@ import { useState } from 'react'
 import styles from './styles.module.scss'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 
-interface ITextInput {
-  password?: boolean
-  placeholder: string
-  value: string
-  onChange: (value: string) => void
-}
-
 export default function TextInput({
+  type,
   password = false,
   placeholder,
   value,
   onChange
-}: ITextInput) {
+}) {
   const [passwordVisible, setPasswordVisible] = useState(false)
 
   const togglePasswordVisible = () => setPasswordVisible(!passwordVisible)
@@ -46,7 +40,8 @@ export default function TextInput({
   return (
     <input
       className={styles.text_input}
-      type="text"
+      type={type}
+      min={0}
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}

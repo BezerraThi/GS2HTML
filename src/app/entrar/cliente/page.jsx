@@ -14,16 +14,16 @@ export default function ClientSigninPage() {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
 
-  const handleChangeUserEmail = (value: string) => setUserEmail(value)
-  const handleChangeUserPassword = (value: string) => setUserPassword(value)
+  const handleChangeUserEmail = (value) => setUserEmail(value)
+  const handleChangeUserPassword = (value) => setUserPassword(value)
 
   const handleSignin = () => {
-    const signupData = {
+    const signinData = {
       userEmail,
       userPassword
     }
 
-    console.log(signupData)
+    console.log(signinData)
   }
 
   const isValid = userEmail !== '' && userPassword !== ''

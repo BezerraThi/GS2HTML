@@ -1,22 +1,16 @@
 import '@/styles/globals.scss'
 import styles from '@/styles/pages/home.module.scss'
 
-import type { Metadata } from 'next'
-
 import { Header, Footer } from '@/components'
 
 import { MainProviders } from './providers'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Responsive Web Development',
   description: 'Projeto Responsive Web Development'
 }
 
-export default function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body>
