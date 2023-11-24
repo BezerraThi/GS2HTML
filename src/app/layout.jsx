@@ -1,5 +1,5 @@
 import '@/styles/globals.scss'
-import styles from '@/styles/pages/home.module.scss'
+import styles from '@/styles/pages/initial.module.scss'
 
 import { Header, Footer } from '@/components'
 

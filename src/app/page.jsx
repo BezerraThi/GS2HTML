@@ -1,22 +1,22 @@
 'use client'
 
-import styles from '@/styles/pages/home.module.scss'
+import styles from '@/styles/pages/initial.module.scss'
 
 import { Button } from '@/components'
 
 import { useRouter } from 'next/navigation'
 
-export default function HomePage() {
+export default function InitialPage() {
   const router = useRouter()
 
   return (
-    <main className={styles.home_page}>
-      <div className={styles.home_container}>
-        <h2 className={styles.home_container__title}>
+    <main className={styles.initial_page}>
+      <div className={styles.initial_container}>
+        <h2 className={styles.initial_container__title}>
           Seja bem-vindo ao <b>FitCross</b>
         </h2>
-        <div className={styles.home_container__wrapper}>
-          <div className={styles.home_container__inputs}>
+        <div className={styles.initial_container__wrapper}>
+          <div className={styles.initial_container__inputs}>
             <Button
               label="Funcionário"
               onClick={() => router.push('/entrar/funcionario')}
