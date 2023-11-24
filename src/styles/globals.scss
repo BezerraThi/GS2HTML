@@ -20,6 +20,10 @@
   user-select: none;
 }
 
+body {
+  overflow: hidden;
+}
+
 // ------------------------- SCROLL BAR
 
 ::-webkit-scrollbar {
