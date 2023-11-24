@@ -1,0 +1,12 @@
+@import '@/styles/variables.module.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: $bradius-item;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 400;
+}
