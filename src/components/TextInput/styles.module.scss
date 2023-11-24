@@ -12,17 +12,28 @@
   font-size: 14px;
   font-weight: 400;
 
-  border: 1px solid $border-input;
+  border: 1px solid $border-input-default;
 
   &:hover {
-    border: 1px solid $border-input-hover;
+    border: 1px solid $border-input-default-hover;
   }
 }
 
 .text_input__password_container {
+  position: relative;
   display: flex;
+  align-items: center;
 }
 
 .text_input__password_toggle {
+  position: absolute;
+  right: 5px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+
+  background-color: transparent;
 }

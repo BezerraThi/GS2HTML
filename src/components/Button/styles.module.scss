@@ -6,7 +6,25 @@
   padding: 8px 14px;
   border-radius: $bradius-item;
   cursor: pointer;
+  transition: 0.3s;
 
   font-size: 14px;
   font-weight: 400;
+
+  color: $font-secondary;
+  background-color: $bg-input-primary;
+  border: 2px solid $border-input-primary;
+
+  &:hover {
+    background-color: $bg-input-primary-hover;
+    border: 2px solid $border-input-primary-hover;
+  }
+
+  &:disabled {
+    pointer-events: none;
+
+    color: $font-secondary;
+    background-color: $bg-input-default;
+    border: 2px solid $bg-input-default;
+  }
 }

@@ -7,36 +7,40 @@ import styles from '@/styles/pages/signup.module.scss'
 import { Button, TextInput } from '@/components'
 
 import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-
-import { ISignupUser } from '@/@types/Auth'
 
 export default function EmployeeSignupPage() {
   const router = useRouter()
 
-  const [signupIsLoading, setSignupIsLoading] = useState(false)
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userAddress, setUserAddress] = useState('')
+  const [userCpf, setUserCpf] = useState('')
+  const [userPassword, setUserPassword] = useState('')
 
-  const { register, handleSubmit, reset, formState } = useForm<ISignupUser>()
+  const handleChangeUserName = (value: string) => setUserName(value)
+  const handleChangeUserEmail = (value: string) => setUserEmail(value)
+  const handleChangeUserAddress = (value: string) => setUserAddress(value)
+  const handleChangeUserCpf = (value: string) => setUserCpf(value)
+  const handleChangeUserPassword = (value: string) => setUserPassword(value)
 
-  const { isValid } = formState
-
-  const handleSignup = async (data: ISignupUser) => {
-    setSignupIsLoading(true)
-
-    const signupFunction = (): boolean => {
-      console.log(data)
-      return true
+  const handleSignup = () => {
+    const signupData = {
+      userName,
+      userEmail,
+      userAddress,
+      userCpf,
+      userPassword
     }
 
-    const signupResponse = signupFunction()
-
-    setSignupIsLoading(false)
-
-    if (signupResponse) {
-      reset()
-      router.push('/home')
-    }
+    console.log(signupData)
   }
+
+  const isValid =
+    userName !== '' &&
+    userEmail !== '' &&
+    userAddress !== '' &&
+    userCpf !== '' &&
+    userPassword !== ''
 
   return (
     <main className={styles.employee_signup_page}>
@@ -44,16 +48,30 @@ export default function EmployeeSignupPage() {
         <h2 className={styles.auth_container__title}>
           <b>Cadastrar-se</b> como <b>funcionário</b>
         </h2>
-        <form
-          className={styles.auth_container__form}
-          onSubmit={handleSubmit(handleSignup)}
-        >
-          <TextInput {...register('userName')} placeholder="Nome completo" />
-          <TextInput {...register('userEmail')} placeholder="E-mail" />
-          <TextInput {...register('userAddress')} placeholder="Endereço" />
-          <TextInput {...register('userCpf')} placeholder="CPF" />
+        <form className={styles.auth_container__form} onSubmit={handleSignup}>
           <TextInput
-            {...register('userPassword')}
+            value={userName}
+            onChange={handleChangeUserName}
+            placeholder="Nome completo"
+          />
+          <TextInput
+            value={userEmail}
+            onChange={handleChangeUserEmail}
+            placeholder="E-mail"
+          />
+          <TextInput
+            value={userAddress}
+            onChange={handleChangeUserAddress}
+            placeholder="Endereço"
+          />
+          <TextInput
+            value={userCpf}
+            onChange={handleChangeUserCpf}
+            placeholder="CPF"
+          />
+          <TextInput
+            value={userPassword}
+            onChange={handleChangeUserPassword}
             password
             placeholder="Senha"
           />
@@ -65,11 +83,7 @@ export default function EmployeeSignupPage() {
             </p>
           </div>
 
-          <Button
-            loading={signupIsLoading}
-            disabled={!isValid}
-            label="Entrar"
-          />
+          <Button disabled={!isValid} label="Entrar" />
         </form>
       </div>
     </main>

@@ -9,7 +9,6 @@ interface IButton {
 }
 
 export default function Button({
-  type = 'primary',
   loading = false,
   disabled = false,
   label,
@@ -19,6 +18,7 @@ export default function Button({
     <button
       className={styles.button}
       type="submit"
+      disabled={disabled}
       onClick={onClick && onClick}
     >
       {label}

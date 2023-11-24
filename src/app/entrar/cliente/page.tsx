@@ -7,36 +7,26 @@ import styles from '@/styles/pages/signin.module.scss'
 import { Button, TextInput } from '@/components'
 
 import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-
-import { ISigninUser } from '@/@types/Auth'
 
 export default function ClientSigninPage() {
   const router = useRouter()
 
-  const [signinIsLoading, setSigninIsLoading] = useState(false)
+  const [userEmail, setUserEmail] = useState('')
+  const [userPassword, setUserPassword] = useState('')
 
-  const { register, handleSubmit, reset, formState } = useForm<ISigninUser>()
+  const handleChangeUserEmail = (value: string) => setUserEmail(value)
+  const handleChangeUserPassword = (value: string) => setUserPassword(value)
 
-  const { isValid } = formState
-
-  const handleSignin = async (data: ISigninUser) => {
-    setSigninIsLoading(true)
-
-    const signinFunction = (): boolean => {
-      console.log(data)
-      return true
+  const handleSignin = () => {
+    const signupData = {
+      userEmail,
+      userPassword
     }
 
-    const signinResponse = signinFunction()
-
-    setSigninIsLoading(false)
-
-    if (signinResponse) {
-      reset()
-      router.push('/home')
-    }
+    console.log(signupData)
   }
+
+  const isValid = userEmail !== '' && userPassword !== ''
 
   return (
     <main className={styles.client_signin_page}>
@@ -44,13 +34,15 @@ export default function ClientSigninPage() {
         <h2 className={styles.auth_container__title}>
           <b>Entrar</b> como <b>cliente</b>
         </h2>
-        <form
-          className={styles.auth_container__form}
-          onSubmit={handleSubmit(handleSignin)}
-        >
-          <TextInput {...register('userEmail')} placeholder="E-mail" />
+        <form className={styles.auth_container__form} onSubmit={handleSignin}>
           <TextInput
-            {...register('userPassword')}
+            value={userEmail}
+            onChange={handleChangeUserEmail}
+            placeholder="E-mail"
+          />
+          <TextInput
+            value={userPassword}
+            onChange={handleChangeUserPassword}
             password
             placeholder="Senha"
           />
@@ -62,11 +54,7 @@ export default function ClientSigninPage() {
             </p>
           </div>
 
-          <Button
-            loading={signinIsLoading}
-            disabled={!isValid}
-            label="Entrar"
-          />
+          <Button disabled={!isValid} label="Entrar" />
         </form>
       </div>
     </main>
