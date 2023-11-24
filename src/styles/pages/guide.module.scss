@@ -2,10 +2,175 @@
 
 .guide_page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   height: auto;
+  padding: 40px $spacing-large;
 
   background-color: $bg-default;
+}
+
+.guide_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  flex: 1;
+  row-gap: 25px;
+
+  .guide_container_header {
+    display: flex;
+    column-gap: 10px;
+    width: 100%;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: $bradius-item;
+
+      border: 1px solid $border-input-default;
+
+      svg {
+        font-size: 16px;
+
+        color: $font-main;
+      }
+    }
+  }
+
+  .guide_container_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+
+    .guide_loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 15px;
+
+      p {
+        font-size: 14px;
+        font-weight: 300;
+
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      svg {
+        font-size: 26px;
+        animation: spin 1s infinite linear;
+
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+
+  .guide_container_list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .guide_item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: calc((100% / 5) - (40px / 5));
+    height: fit-content;
+    padding: 10px;
+    border-radius: $bradius-item;
+    transition: 0.3s;
+
+    border: 1px solid $border-input-default;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @media screen and (max-width: $responsive-desktop) {
+      width: calc((100% / 4) - (30px / 4));
+    }
+
+    @media screen and (max-width: $responsive-tablet) {
+      width: calc((100% / 3) - (20px / 3));
+    }
+
+    @media screen and (max-width: 600px) {
+      width: calc((100% / 2) - (10px / 2));
+    }
+
+    @media screen and (max-width: $responsive-mobile) {
+      width: 100%;
+    }
+  }
+
+  .guide_item__image {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    border-radius: $bradius-item;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .guide_item__details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+    span {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 10px;
+      width: 100%;
+      padding: 6px 10px;
+      border-radius: $bradius-item;
+
+      background-color: rgba(0, 0, 0, 0.05);
+
+      p,
+      b {
+        font-size: 13px;
+        line-height: 15px;
+        font-weight: 300;
+      }
+
+      b {
+        display: flex;
+        flex: 1;
+        font-weight: 500;
+        text-align: right;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 15px;
+        max-height: 15px;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
