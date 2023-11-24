@@ -95,3 +95,25 @@
     border: 1px solid $bg-input-default;
   }
 }
+
+.calculator_container__result {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  width: 100%;
+  padding: 12px;
+  border-radius: $bradius-item;
+
+  background-color: #efefef;
+  border: 1px solid $border-input-default-hover;
+
+  p {
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 400;
+
+    b {
+      font-weight: 600;
+    }
+  }
+}

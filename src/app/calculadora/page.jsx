@@ -23,6 +23,18 @@ export default function CalculatorPage() {
     setImcResult(imcResult)
   }
 
+  const handleCalculateImcCategory = (imc) => {
+    if (imc < 18.5) {
+      return 'Magreza'
+    } else if (imc >= 18.5 && imc <= 24.9) {
+      return 'Normal'
+    } else if (imc >= 25 && imc <= 30) {
+      return 'Sobrepeso'
+    } else {
+      return 'Obesidade'
+    }
+  }
+
   const handleResetImc = () => {
     setImcResult(null)
     setUserWeight(0)
@@ -65,7 +77,7 @@ export default function CalculatorPage() {
             label="Calcular"
             onClick={handleCalculateImc}
           />
-          <span>{imcResult}</span>
+          <span>{imcResult && `${imcResult} kg/m²`}</span>
 
           {!!imcResult && (
             <button onClick={handleResetImc}>
@@ -73,6 +85,16 @@ export default function CalculatorPage() {
             </button>
           )}
         </div>
+        {imcResult && (
+          <div className={styles.calculator_container__result}>
+            <p>
+              Seu IMC é de <b>{imcResult} kg/m²</b>
+            </p>
+            <p>
+              Você é considerado <b>{handleCalculateImcCategory(imcResult)}</b>
+            </p>
+          </div>
+        )}
       </div>
     </main>
   )

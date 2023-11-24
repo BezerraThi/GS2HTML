@@ -19,12 +19,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.header_logo}>
         <Link href="/">
-          <Image
-            src="/logo.png"
-            width={121}
-            height={60}
-            alt="Picture of the author"
-          />
+          <Image src="/logo.png" width={121} height={60} alt="Logo" />
         </Link>
       </div>
       {isUserLogged && (

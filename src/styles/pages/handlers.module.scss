@@ -1,0 +1,57 @@
+@import '@/styles/variables.module.scss';
+
+.page_not_found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: $spacing-large;
+
+  background-color: $bg-default;
+}
+
+.page_not_found__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+
+  img {
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+}
+
+.page_error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: $spacing-large;
+
+  background-color: $bg-default;
+}
+
+.page_error__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+
+  img {
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+}
