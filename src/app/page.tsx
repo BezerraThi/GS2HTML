@@ -12,11 +12,10 @@ export default function HomePage() {
   return (
     <main className={styles.home_page}>
       <div className={styles.home_container}>
-        <h2 className={styles.home_container_title}>
+        <h2 className={styles.home_container__title}>
           Seja bem-vindo ao <b>FitCross</b>
         </h2>
-        <div className={styles.home_container_wrapper}>
-          <p className={styles.home_container_subtitle}>Entar como:</p>
+        <div className={styles.home_container__wrapper}>
           <div className={styles.home_container__inputs}>
             <Button
               label="Funcionário"
@@ -24,7 +23,7 @@ export default function HomePage() {
             />
             <Button
               label="Cliente"
-              onClick={() => router.push('//entrar/cliente')}
+              onClick={() => router.push('/entrar/cliente')}
             />
           </div>
         </div>

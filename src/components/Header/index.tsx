@@ -15,17 +15,19 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header_logo}>
-        <Image
-          src="/logo.png"
-          width={121}
-          height={60}
-          alt="Picture of the author"
-        />
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            width={121}
+            height={60}
+            alt="Picture of the author"
+          />
+        </Link>
       </div>
       <nav className={styles.header_navigation}>
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/home">Home</Link>
           </li>
           <li>
             <Link href="/calculadora">Calculadora de IMC</Link>
@@ -36,6 +38,8 @@ export default function Header() {
         </ul>
       </nav>
       <div className={styles.header_auth}>
+        <Button label="Marcar consulta" onClick={() => {}} />
+
         {isUserLogged ? (
           <Button label="Sair" onClick={() => {}} />
         ) : (

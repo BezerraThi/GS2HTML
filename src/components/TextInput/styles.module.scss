@@ -1,0 +1,28 @@
+@import '@/styles/variables.module.scss';
+
+.text_input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: $bradius-item;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  border: 1px solid $border-input;
+
+  &:hover {
+    border: 1px solid $border-input-hover;
+  }
+}
+
+.text_input__password_container {
+  display: flex;
+}
+
+.text_input__password_toggle {
+  display: flex;
+}

@@ -31,7 +31,7 @@
   align-items: center;
 }
 
-.home_container_title {
+.home_container__title {
   margin-bottom: 25px;
 
   font-size: 22px;
@@ -43,17 +43,12 @@
   }
 }
 
-.home_container_wrapper {
+.home_container__wrapper {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
   width: 100%;
   max-width: 200px;
-}
-
-.home_container_subtitle {
-  font-size: 14px;
-  font-weight: 400;
 }
 
 .home_container__inputs {
