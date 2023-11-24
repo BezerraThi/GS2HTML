@@ -64,51 +64,55 @@ export default function Header() {
         )}
       </div>
 
-      <div className={styles.header_mobile}>
-        <div
-          className={styles.header_mobile__toggle}
-          onClick={toggleMenuMobile}
-        >
-          {menuMobileIsOpen ? <FiX /> : <FiMenu />}
-        </div>
-        <div
-          className={`${styles.header_mobile__menu} ${
-            menuMobileIsOpen && styles.opened
-          }`}
-        >
-          <div className={styles.header_auth__mobile}>
-            {isUserLogged &&
-              (userType === 'client' ? (
-                <Button label="Marcar consulta" onClick={() => {}} />
-              ) : (
-                <Button label="Criar consulta" onClick={() => {}} />
-              ))}
+      {isUserLogged && (
+        <div className={styles.header_mobile}>
+          <div
+            className={styles.header_mobile__toggle}
+            onClick={toggleMenuMobile}
+          >
+            {menuMobileIsOpen ? <FiX /> : <FiMenu />}
+          </div>
+          <div
+            className={`${styles.header_mobile__menu} ${
+              menuMobileIsOpen && styles.opened
+            }`}
+          >
+            <div className={styles.header_auth__mobile}>
+              {isUserLogged &&
+                (userType === 'client' ? (
+                  <Button label="Marcar consulta" onClick={() => {}} />
+                ) : (
+                  <Button label="Criar consulta" onClick={() => {}} />
+                ))}
 
-            {isUserLogged ? (
-              <Button label="Sair" onClick={handleLogout} />
-            ) : (
-              <Button
-                label="Entrar / Cadastrar"
-                onClick={() => router.push('/')}
-              />
+              {isUserLogged ? (
+                <Button label="Sair" onClick={handleLogout} />
+              ) : (
+                <Button
+                  label="Entrar / Cadastrar"
+                  onClick={() => router.push('/')}
+                />
+              )}
+            </div>
+
+            {isUserLogged && (
+              <nav className={styles.header_navigation__mobile}>
+                <ul>
+                  <li>
+                    <Link href="/home">Home</Link>
+                  </li>
+                  <li>
+                    <Link href="/calculadora">Calculadora de IMC</Link>
+                  </li>
+                  <li>
+                    <Link href="/guia">Guia de treinos</Link>
+                  </li>
+                </ul>
+              </nav>
             )}
           </div>
-
-          <nav className={styles.header_navigation__mobile}>
-            <ul>
-              <li>
-                <Link href="/home">Home</Link>
-              </li>
-              <li>
-                <Link href="/calculadora">Calculadora de IMC</Link>
-              </li>
-              <li>
-                <Link href="/guia">Guia de treinos</Link>
-              </li>
-            </ul>
-          </nav>
         </div>
-      </div>
+      )}
     </header>
   )
 }
