@@ -8,8 +8,12 @@ import { Button, TextInput } from '@/components'
 
 import { useRouter } from 'next/navigation'
 
+import { useAuth } from '@/providers/AuthContext'
+
 export default function EmployeeSigninPage() {
   const router = useRouter()
+
+  const { handleLogin } = useAuth()
 
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPassword] = useState('')
@@ -17,13 +21,21 @@ export default function EmployeeSigninPage() {
   const handleChangeUserEmail = (value) => setUserEmail(value)
   const handleChangeUserPassword = (value) => setUserPassword(value)
 
+  const reset = () => {
+    setUserEmail('')
+    setUserPassword('')
+  }
+
   const handleSignin = () => {
     const signinData = {
       userEmail,
       userPassword
     }
 
-    console.log(signinData)
+    handleLogin('employee')
+    reset()
+
+    router.push('/home')
   }
 
   const isValid = userEmail !== '' && userPassword !== ''
@@ -34,7 +46,7 @@ export default function EmployeeSigninPage() {
         <h2 className={styles.auth_container__title}>
           <b>Entrar</b> como <b>funcionário</b>
         </h2>
-        <form className={styles.auth_container__form} onSubmit={handleSignin}>
+        <div className={styles.auth_container__form}>
           <TextInput
             value={userEmail}
             onChange={handleChangeUserEmail}
@@ -55,8 +67,8 @@ export default function EmployeeSigninPage() {
             </p>
           </div>
 
-          <Button disabled={!isValid} label="Entrar" />
-        </form>
+          <Button disabled={!isValid} label="Entrar" onClick={handleSignin} />
+        </div>
       </div>
     </main>
   )

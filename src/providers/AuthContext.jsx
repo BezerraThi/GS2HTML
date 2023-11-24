@@ -10,47 +10,63 @@ import React, {
   useState
 } from 'react'
 
+import { useRouter } from 'next/navigation'
+
+import { getLoginStatus, loginUser, logoutUser } from '@/utils/localStorageAuth'
+
 // ===================================================================
 
 export const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
-  const [userId, setUserId] = useState(null)
-  const [userData, setUserData] = useState(null)
+  const router = useRouter()
+
+  const [isUserLogged, setIsUserLogged] = useState(false)
+  const [userType, setUserType] = useState(null)
+
+  // =================================================================
+
+  const handleStorageChange = () => {
+    const logResponse = getLoginStatus()
+
+    setIsUserLogged(!!logResponse)
+    setUserType(logResponse)
+  }
+
+  const handleLogin = useCallback((userType) => {
+    loginUser(userType)
+
+    handleStorageChange()
+  }, [])
+
+  const handleLogout = useCallback(() => {
+    logoutUser()
+
+    handleStorageChange()
+
+    router.push('/')
+  }, [])
 
   // -----------------------------------------------------------------
 
-  const isUserLogged = useMemo(() => {
-    return false
-  }, [userData])
+  // useEffect(() => {
+  //   window.addEventListener('storage', handleStorageChange)
 
-  // =================================================================
-
-  useEffect(() => {}, [])
-
-  // =================================================================
-
-  const handleLogout = useCallback(async () => {
-    // const response = await handleLogoutUser()
-
-    console.log('deslogando')
-
-    // if (!response) {
-    //   // Função de alerta falha ao fazer logout
-    //   return
-    // }
-  }, [])
+  //   return () => {
+  //     window.removeEventListener('storage', handleStorageChange)
+  //   }
+  // }, [])
 
   // =================================================================
 
   const AuthContextValues = useMemo(() => {
     return {
-      userId,
-      userData,
       isUserLogged,
+      userType,
+      handleLogin,
       handleLogout
     }
-  }, [userId, userData, isUserLogged, handleLogout])
+  }, [userType, isUserLogged, handleLogin, handleLogout])
 
   return (
     <AuthContext.Provider value={AuthContextValues}>

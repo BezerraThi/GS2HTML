@@ -8,8 +8,12 @@ import { Button, TextInput } from '@/components'
 
 import { useRouter } from 'next/navigation'
 
+import { useAuth } from '@/providers/AuthContext'
+
 export default function ClientSignupPage() {
   const router = useRouter()
+
+  const { handleLogin } = useAuth()
 
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
@@ -23,6 +27,14 @@ export default function ClientSignupPage() {
   const handleChangeUserCpf = (value) => setUserCpf(value)
   const handleChangeUserPassword = (value) => setUserPassword(value)
 
+  const reset = () => {
+    setUserName('')
+    setUserEmail('')
+    setUserAddress('')
+    setUserCpf('')
+    setUserPassword('')
+  }
+
   const handleSignup = () => {
     const signupData = {
       userName,
@@ -32,7 +44,10 @@ export default function ClientSignupPage() {
       userPassword
     }
 
-    console.log(signupData)
+    handleLogin('client')
+    reset()
+
+    router.push('/home')
   }
 
   const isValid =
@@ -48,7 +63,7 @@ export default function ClientSignupPage() {
         <h2 className={styles.auth_container__title}>
           <b>Cadastrar-se</b> como <b>cliente</b>
         </h2>
-        <form className={styles.auth_container__form} onSubmit={handleSignup}>
+        <div className={styles.auth_container__form}>
           <TextInput
             value={userName}
             onChange={handleChangeUserName}
@@ -83,8 +98,8 @@ export default function ClientSignupPage() {
             </p>
           </div>
 
-          <Button disabled={!isValid} label="Entrar" />
-        </form>
+          <Button disabled={!isValid} label="Entrar" onClick={handleSignup} />
+        </div>
       </div>
     </main>
   )

@@ -9,7 +9,6 @@ export default function Button({
   return (
     <button
       className={styles.button}
-      type="submit"
       disabled={disabled}
       onClick={onClick && onClick}
     >
